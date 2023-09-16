@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'baseInfo'
 ]
 
 MIDDLEWARE = [
@@ -74,13 +75,33 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mssql',
+        'NAME': 'testTarget',
+        'USER': 'sa',
+        'PASSWORD': '123456',
+        'HOST': '127.0.0.1',  # Replace with your SQL Server hostname
+        'PORT': '1433',           # Leave empty to use the default SQL Server port (1433)
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',  # Adjust the driver version
+        },
     }
 }
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "OPTIONS": {
+#             "read_default_file": "../db/mySql.cnf",
+#         },
+#     }
+# }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
